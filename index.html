@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>letter</title>
+    <style>
+      body {
+        background-color: #967f7f;
+      }
+
+      #bg {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        background: #ffffff;
+      }
+
+      .contact .envelope {
+        position: absolute;
+        height: 93px;
+        width: 165px;
+        left: 50%;
+        margin-left: -83px;
+        top: 50%;
+        margin-top: -50px;
+        background: #f9f9f9;
+        scale: 3;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.589);
+        cursor: pointer;
+
+        transition: margin-top 300ms;
+        -ms-transition: margin-top 300ms;
+        -moz-transition: margin-top 300ms;
+        -o-transition: margin-top 300ms;
+        -webkit-transition: margin-top 300ms;
+      }
+
+      @keyframes wiggle {
+        0% {
+          transform: rotate(0deg);
+        }
+        33% {
+          transform: rotate(5deg);
+        }
+        66% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      .contact:hover .envelope {
+        animation: wiggle 0.3s;
+        animation-iteration-count: 1;
+        animation-delay: 0.1s;
+      }
+
+      .contact .envelope .top {
+        position: absolute;
+        top: -3px;
+        left: 0px;
+        width: 100%;
+        height: 73px;
+        z-index: 30;
+        overflow: hidden;
+
+        transform-origin: top;
+        -ms-transform-origin: top;
+        -moz-transform-origin: top;
+        -o-transform-origin: top;
+        -webkit-transform-origin: top;
+
+        transition: transform 300ms 150ms, z-index 0ms 150ms, height 300ms 0ms,
+          top 300ms 0ms;
+        -ms-transition: -ms-transform 300ms 150ms, z-index 0ms 150ms,
+          height 300ms 0ms, top 300ms 0ms;
+        -moz-transition: -moz-transform 300ms 150ms, z-index 0ms 150ms,
+          height 300ms 0ms, top 300ms 0ms;
+        -o-transition: -o-transform 300ms 150ms, z-index 0ms 150ms,
+          height 300ms 0ms, top 300ms 0ms;
+        -webkit-transition: -webkit-transform 300ms 150ms, z-index 0ms 150ms,
+          height 300ms 0ms, top 300ms 0ms;
+      }
+
+      .contact:focus .envelope {
+        transition: left scale 300ms 0ms, scale 300ms 0ms;
+        -ms-transition: left 300ms 0ms, scale 300ms 0ms;
+        -moz-transition: left 300ms 0ms, scale 300ms 0ms;
+        -o-transition: left 300ms 0ms, scale 300ms 0ms;
+        -webkit-transition: left 300ms 0ms, scale 300ms 0ms;
+        left: 10%;
+        scale: 1;
+      }
+
+      .contact:focus .envelope .top {
+        transition: transform 300ms 0ms, height 300ms 150ms, top 300ms 150ms;
+        -ms-transition: -ms-transform 300ms 0ms, height 300ms 150ms,
+          top 300ms 150ms;
+        -moz-transition: -moz-transform 300ms 0ms, height 300ms 150ms,
+          top 300ms 150ms;
+        -o-transition: -o-transform 300ms 0ms, height 300ms 150ms,
+          top 300ms 150ms;
+        -webkit-transition: -webkit-transform 300ms 0ms, height 300ms 150ms,
+          top 300ms 150ms;
+
+        transform: rotateX(180deg);
+        -ms-transform: rotateX(180deg);
+        -moz-transform: rotateX(180deg);
+        -o-transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+      }
+
+      .contact:focus .envelope .paper {
+        left: 40vw;
+        scale: 5;
+        z-index: 30;
+        top: -30px;
+        transition: margin-top 300ms 150ms, left 300ms 150ms, scale 300ms 150ms;
+        -ms-transition: margin-top left 300ms 150ms, margin-left 300ms 150ms,
+          scale 300ms 150ms;
+        -moz-transition: margin-top 300ms 150ms, left 300ms 150ms,
+          scale 300ms 150ms;
+        -o-transition: margin-top 300ms 150ms, left 300ms 150ms,
+          scale 300ms 150ms;
+        -webkit-transition: margin-top 300ms 150ms, left 300ms 150ms,
+          scale 300ms 150ms;
+          animation-duration: 1s;
+      }
+
+      .contact .envelope .outer {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        border-left: 83px solid transparent;
+        border-right: 82px solid transparent;
+        border-top: 70px solid #eee;
+      }
+
+      .contact .envelope .outer .inner {
+        position: absolute;
+        left: -81px;
+        top: -73px;
+        border-left: 81px solid transparent;
+        border-right: 80px solid transparent;
+        border-top: 68px solid #622222;
+      }
+
+      .contact .envelope .bottom {
+        position: absolute;
+        z-index: 20;
+        bottom: 0px;
+        left: 2px;
+        border-left: 81px solid transparent;
+        border-right: 80px solid transparent;
+        border-bottom: 45px solid #a83434;
+      }
+
+      .contact .envelope .left {
+        position: absolute;
+        z-index: 20;
+        top: 0px;
+        left: 0px;
+        border-left: 81px solid #8a1e1e;
+        border-top: 45px solid transparent;
+        border-bottom: 45px solid transparent;
+      }
+
+      .contact .envelope .right {
+        position: absolute;
+        z-index: 20;
+        top: 0px;
+        right: 0px;
+        border-right: 80px solid #8a1e1e;
+        border-top: 45px solid transparent;
+        border-bottom: 45px solid transparent;
+      }
+
+      .contact .envelope .cover {
+        position: absolute;
+        z-index: 15;
+        bottom: 0px;
+        left: 0px;
+        height: 55%;
+        width: 100%;
+        background: #eee;
+      }
+
+      .contact .envelope .paper {
+        position: absolute;
+        width: 100%;
+        height: 202px;
+        top: -40px;
+        left: 0px;
+        background: url(./m/fascinating.jpg);
+        background-size: 100%;
+        background-blend-mode: screen;
+        background-color: #dcdcdccb;
+        z-index: 10;
+        scale: 0.1;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.601);
+        transition: margin-top 300ms 0ms;
+        -ms-transition: margin-top 300ms 0ms;
+        -moz-transition: margin-top 300ms 0ms;
+        -o-transition: margin-top 300ms 0ms;
+        -webkit-transition: margin-top 300ms 0ms;
+        color: #000000;
+        animation-duration: 1s;
+      }
+
+      .papercont {
+        text-align: left;
+        font-size: 2pt;
+        font-family: "Comic Sans MS";
+        padding: 10px;
+      }
+
+      .all {
+        transition: margin-top 300ms 0ms;
+        -ms-transition: margin-top 300ms 0ms;
+        -moz-transition: margin-top 300ms 0ms;
+        -o-transition: margin-top 300ms 0ms;
+        -webkit-transition: margin-top 300ms 0ms;
+      }
+
+      .contact .envelope .paper a:hover {
+        color: #eee;
+      }
+
+      .inactiveLink {
+        pointer-events: none;
+        cursor: default;
+      }
+
+      img {
+        width: 50px;
+      }
+
+      .image {
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" onclick="ani()" class="contact">
+      <div class="all envelope">
+        <div class="all top">
+          <div class="outer"><div class="inner"></div></div>
+        </div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="cover"></div>
+
+        <div class="all paper inactiveLink">
+          <p class="papercont">
+           <span style="color: #cccccc;font-size: 4.5pt; text-decoration: underline; text-shadow:  0px 0px 0.1px #1eff69;"><span style="color:#ff0000;">Hallo</span><span style="">&nbsp;</span><span style="color:#4a86e8;">guten</span><span style="">&nbsp;</span><span style="color:#ff00ff;">Tag</span><span style="">&nbsp;</span><span style="color:#ff9900;">gria&szlig;</span><span style="">&nbsp;</span><span style="color:#0000ff;">Gott</span><span style="">&nbsp;</span><span style="color:#199400;">servus</span><span style="">&nbsp;</span><span style="color:#980000;">moin</span><span style="">&nbsp;</span><span style="color:#038989;">und</span><span style="">&nbsp;</span><span style="color:#ff0000;">so,</span><span style="">&nbsp;</span><span style="color:#0000ff;">gell?</span></span>
+<br><br>
+            Tut mir leid! it been a while (>.<‘), but sometimes you just
+            gotta exist for an unspecified period of time, y know 
+            (° -°)
+            <br><br>
+            Als ers1es: Howareyoufinesänkyou. 
+            <br><br>
+            2weitens: OH MAH GAHHHHH, YOU
+            MADE IT! <(‘O_o)7 Melatonyan is great and everynyan should read it
+            right now. I must embarrassingly confess that I cannot relate to the
+            main scenario, as I haven’t been on many forums, let alone ones
+            where you play games together with friends. The closest I’ve come to
+            anything resembling this was playing Pokemon Mystery Dungeon :v. I
+            currently can’t yet say much abt it other than I also like gaming
+            and adventures are the right thing to do. I really want to brutally
+            criticise it and tear it apart and complain about how all of it is
+            just pure ideology, but I can’t (as of yet at least >:)K). Tbh, I’m
+            just excited whenever my friends make cool shit, its always makes me
+            also wanna make cool shit. Your art is ofc epic and whatnot and so
+            on I COMMAND YOU TO MAKE MORE (O-O) (the cloth on that Cicada panel
+            doe…). 
+            <br><br>
+            Dritt3ns: I must say that I really loved that letter you sent
+            me last year, not just for itself, but the idea of it if found to be
+            really cool and interesting. It sort of ended up in me thinking
+            about and researching long distance communication, which also
+            eventually led to me writing my last semester’s thesis about that
+            topic (I got a perfect grade for it :)). I wanted to at least try
+            sth similar, but given that the place your staying (still?) isn’t
+            set, this was the best thing I could think of. I’m sorry it too this
+            long to come back to you, I don’t know how to make this point
+            convincingly, even to myself, but I kind of wanted to emulate the
+            lag that comes with sending a physical letter over a distance. I’ve
+            had a (kind of) penfried before, and I really like that kind of
+            stuff, I think I am more thoughtful in that format. You can respond
+            to this however you want, I’m not against chitchat per se or
+            anything. Basically, I’m back, or, I never really left… If you want
+            me to draw with you again, give you a German lesson or sth, I’m down
+            <img src="./m/chrome_unfxGrZKGp.png" style="width: 5px;" alt="">. On that topic… 
+            <br><br>
+            Vi4rtens: How have you been faring in
+            DEUTSCHLAND? Have you not been killed by a BRETZELMANN or a
+            FLEISCHMETZGER yet? Do you like the grass and trees, are they to
+            your liking here? Personally the weather has been slaughtering me
+            the past weeks, I felt really immobilised by all the sudden shifts
+            and headache inducing humidity <img src="./m/NXIj1R5sZ.png" alt="" style="width: 5px;">. Plus, the Deutsche Bahn has been
+            chipping away at my insanity, and given that next semester it’s
+            gonna be my main mode of transportation, idk how much longer I have…
+            hopefully you haven’t had to experience its demonic shenanigans. If
+            you need any survival tips, as a seasoned veteran, who has managed
+            to hold out for at least 24 years, I’ll alway be glad to help B^J.
+            Stay safe out there! 
+            <br><br>
+            Fünften5: As I’ve told you, I’m not well
+            acclimated to hot climate, so for that reason summer already places
+            last on my seasons tier list. but this one was especially draining
+            to me. I don’t even think it was hotter than the last one, maybe the
+            opposite even, but the weather was def frantic, which made the air
+            more humid, and thus more oppressive on my soul. it’s almost like
+            you brought just a tiny littIe bit of Florida with you, really
+            miniscule. I felt immobilised for weeks on end. I could only muster
+            up enough strength to barely get all the school stuff done, aside
+            from that I’ve mostly bing chilling (and reading books 🤓). I’ve
+            also generally stayed quiet and temporarily ceased contact, with my
+            other friends as well, I just needed a little period of retreat. But
+            the point is that I’m BACK, at least I think I am, but that’s all
+            that counts, right? *entering fool jule*. <br><br>
+            I tanoshimidesu to
+            your response and I’m gonna be stocked af. :) <br><br> LG <br> JUL€
+            </p>
+            
+            have some sick forest pics B)
+            <img src="./m/01.jpg" alt="">
+            <img src="./m/02.jpg" class="image" alt="">
+          </div>
+        </div>
+      </div>
+    </button>
+
+    <script>
+      function ani() {
+        document.getElementsByClassName("all").className = "all";
+      }
+    </script>
+  </body>
+</html>
